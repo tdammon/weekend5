@@ -8,17 +8,37 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper'
-import Input from '@material-ui/core/Input';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+
+import ForwardIcon from '@material-ui/icons/Forward';
+
 
 const styles = theme =>({
     root: {
         maxWidth: 500,
     },
     cardDisplay: {
-        backgroundColor: 'pink',
+        backgroundColor: 'lightblue',
         width: 345,
         height: 200,
         padding:30,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    contentDisplay: {
+        height: 80,
+        display: 'flex',
+        justifyContent: 'flex-end',
+    },
+    formDisplay: {
+        backgroundColor: 'lightgrey',
+        width: 150,
+        height: 50,
+        padding: 50,
     }
 })
 class FirstPage extends Component {
@@ -56,12 +76,20 @@ class FirstPage extends Component {
                         <Card className={classes.root}>
                             <CardContent className={classes.cardDisplay}>
                     
-                                <form>
-                                <Input onChange={this.handleChange} placeholder='How are you feeling' value={this.state.feeling} />
+                                <form className={classes.formDisplay}>
+                                        <InputLabel>How do you Feel</InputLabel>
+                                        <Select value={this.state.feeling} onChange={this.handleChange}>
+                                            <MenuItem value='0'>0</MenuItem>
+                                            <MenuItem value='1'>1</MenuItem>
+                                            <MenuItem value='2'>2</MenuItem>
+                                            <MenuItem value='3'>3</MenuItem>
+                                            <MenuItem value='4'>4</MenuItem>
+                                            <MenuItem value='5'>5</MenuItem>
+                                        </Select>
                                 </form>
                             </CardContent>
-                            <CardActions>
-                                <Button onClick={this.submitData}>Submit</Button>
+                            <CardActions className={classes.contentDisplay}>
+                                <Button onClick={this.submitData} variant='contained' color='primary'>Next <ForwardIcon></ForwardIcon></Button>
                             </CardActions>
                         </Card>
                     </Grid>
