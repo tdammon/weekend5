@@ -6,12 +6,20 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper'
+import Input from '@material-ui/core/Input';
 
 const styles = theme =>({
     root: {
-        maxWidth: 345,
+        maxWidth: 500,
     },
-
+    cardDisplay: {
+        backgroundColor: 'pink',
+        width: 345,
+        height: 200,
+        padding:30,
+    }
 })
 class FirstPage extends Component {
     state = {
@@ -43,21 +51,25 @@ class FirstPage extends Component {
 
         return(
             <div>
-                <Card >
-                    <CardContent className={classes.root}>
-               
-                        <form>
-                        <input onChange={this.handleChange} placeholder='How are you feeling' value={this.state.feeling} />
-                        </form>
-                    </CardContent>
-                    <CardActions>
-                        <Button onClick={this.submitData}>Submit</Button>
-                    </CardActions>
-                </Card>
+                <Paper>
+                    <Grid container justify="center">
+                        <Card className={classes.root}>
+                            <CardContent className={classes.cardDisplay}>
+                    
+                                <form>
+                                <Input onChange={this.handleChange} placeholder='How are you feeling' value={this.state.feeling} />
+                                </form>
+                            </CardContent>
+                            <CardActions>
+                                <Button onClick={this.submitData}>Submit</Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                </Paper>
             </div>
         )
     }
 }
 
 //this export connects the component to the reduxStore as well as allowing us to use the history props
-export default connect()(withRouter(FirstPage))(withStyles(styles)(FirstPage))
+export default withRouter(connect()(withStyles(styles)(FirstPage)))
