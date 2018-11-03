@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom'
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
 
+const styles = theme =>({
+    root: {
+        maxWidth: 345,
+    },
+
+})
 class FirstPage extends Component {
     state = {
         feeling: ''
@@ -28,16 +39,25 @@ class FirstPage extends Component {
     }
 
     render(){
+        const { classes } = this.props;
+
         return(
             <div>
-                <form>
-                    <input onChange={this.handleChange} placeholder='How are you feeling' value={this.state.feeling} />
-                </form>
-                <button onClick={this.submitData} />
+                <Card >
+                    <CardContent className={classes.root}>
+               
+                        <form>
+                        <input onChange={this.handleChange} placeholder='How are you feeling' value={this.state.feeling} />
+                        </form>
+                    </CardContent>
+                    <CardActions>
+                        <Button onClick={this.submitData}>Submit</Button>
+                    </CardActions>
+                </Card>
             </div>
         )
     }
 }
 
 //this export connects the component to the reduxStore as well as allowing us to use the history props
-export default connect()(withRouter(FirstPage));
+export default connect()(withRouter(FirstPage))(withStyles(styles)(FirstPage))
