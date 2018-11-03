@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import FirstPage from '../FirstPage/FirstPage'
 import SecondPage from '../SecondPage/SecondPage'
 import ThirdPage from '../ThirdPage/ThirdPage'
@@ -14,9 +15,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Feedback!</h1>
-          <h4><i>Don't forget it!</i></h4>
+        <header className='App-header'>
+          <h1 className='App-title'>Do your Feedback!</h1>
+          <h4><i>Don't make Mary hunt you down</i></h4>
+          {/* <div >
+            <img src='/App/goat_small.jpg' />
+          </div> */}
         </header>
         <br/>
         <Router>
