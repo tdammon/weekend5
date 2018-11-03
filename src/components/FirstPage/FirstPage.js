@@ -11,9 +11,12 @@ import Paper from '@material-ui/core/Paper'
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
 
 import ForwardIcon from '@material-ui/icons/Forward';
+
 
 
 const styles = theme =>({
@@ -21,7 +24,7 @@ const styles = theme =>({
         maxWidth: 500,
     },
     cardDisplay: {
-        backgroundColor: 'lightblue',
+        backgroundColor: `lightblue`,
         width: 345,
         height: 200,
         padding:30,
@@ -71,10 +74,29 @@ class FirstPage extends Component {
 
         return(
             <div>
+                
+                <Stepper activeStep={0}>
+                    <Step key='0'>
+                        <StepLabel>Feeling</StepLabel>
+                    </Step>
+                    <Step key='1'>
+                        <StepLabel>Understanding</StepLabel>
+                    </Step>
+                    <Step key='2'>
+                        <StepLabel>Support</StepLabel>
+                    </Step>
+                    <Step key='3'>
+                        <StepLabel>Comments</StepLabel>
+                    </Step>
+                    <Step key='4'>
+                        <StepLabel>Completed</StepLabel>
+                    </Step>
+                </Stepper >
+                
                 <Paper>
                     <Grid container justify="center">
-                        <Card className={classes.root}>
-                            <CardContent className={classes.cardDisplay}>
+                        <Card className={classes.root} >
+                            <CardContent className={classes.cardDisplay} >
                     
                                 <form className={classes.formDisplay}>
                                         <InputLabel>How do you Feel</InputLabel>
@@ -87,6 +109,7 @@ class FirstPage extends Component {
                                             <MenuItem value='5'>5</MenuItem>
                                         </Select>
                                 </form>
+                                
                             </CardContent>
                             <CardActions className={classes.contentDisplay}>
                                 <Button onClick={this.submitData} variant='contained' color='primary'>Next <ForwardIcon></ForwardIcon></Button>

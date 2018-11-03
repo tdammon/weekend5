@@ -6,7 +6,10 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import swal from 'sweetalert'
 
 const styles = theme => ({
     root: {
@@ -41,6 +44,39 @@ class AdminPage extends Component {
         this.getData();
     }
 
+    //This function will delete a row of feedback from the Admin Page
+    //The user will receive an alert asking them to confirm delete
+    deleteFeedback =(id)=> {
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this feedback!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
+                //Axios Delete Reques
+                axios({
+                    method: 'DELETE',
+                    url: `/feedback/${id}`,
+                }).then(response => {
+                    console.log(response);
+                    this.getData();
+                }).catch(err => {
+                    console.log(err)
+                })
+              swal("This feedback has been deleted!", {
+                icon: "success",
+              });
+            } else {
+              swal("Your feedback is safe!");
+            }
+          });
+
+        
+    }
+
     render(){
         const {classes} = this.props;
         return(
@@ -63,6 +99,7 @@ class AdminPage extends Component {
                                <TableCell>{item.understanding}</TableCell>
                                <TableCell>{item.support}</TableCell>
                                <TableCell>{item.comments}</TableCell>
+                               <TableCell><IconButton onClick={() =>this.deleteFeedback(item.id)}><DeleteIcon/></IconButton></TableCell>
                            </TableRow>
                            )
                        })}

@@ -4,13 +4,13 @@
 
 .App-header {
   background-color: #033076;
-  min-height: 70px;
-  padding: 20px;
+  max-height: 90px;
+  padding: 10px;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+  margin:0px;
 }
 
 .App-intro {
