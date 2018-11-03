@@ -17,7 +17,7 @@ const reducer = (state={feeling: '', understand: '', support: '', comments: ''},
         state.support = action.payload.support;
     } else if(action.type ==='SET_COMMENTS'){
         state.comments = action.payload.comments;
-    }
+    } 
     console.log(state)
     return state;
 }

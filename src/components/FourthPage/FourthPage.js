@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom'
 import axios from 'axios'
 
 const mapReduxStateToProps = (reduxState) => ({
@@ -17,6 +18,12 @@ class FourthPage extends Component {
         event.preventDefault();
         this.props.dispatch({type: 'SET_COMMENTS', payload: this.state})
         this.sendData();
+        this.changeLocation();
+    }
+
+    //this function takes us to the fifth page
+    changeLocation= ()=> {
+        this.props.history.push('/fifthPage')
     }
 
     //This function will update the local state with the users response
@@ -44,13 +51,14 @@ class FourthPage extends Component {
     render(){
         return(
             <div>
-                <form onSubmit={this.submitData}>
+                <form>
                     <input onChange={this.handleChange} placeholder='Any comments' value={this.state.comments} />
                 </form>
+                <button onSubmit={this.submitData} />
             </div>
         )
     }
 }
 
 //this export connects the component to the reduxStore
-export default connect(mapReduxStateToProps)(FourthPage);
+export default connect(mapReduxStateToProps)(withRouter(FourthPage));

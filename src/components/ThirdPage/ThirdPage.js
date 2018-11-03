@@ -12,6 +12,7 @@ class ThirdPage extends Component {
     submitData=(event) => {
         event.preventDefault();
         this.props.dispatch({type: 'SET_SUPPORT', payload: this.state})
+        this.changeLocation();
     }
 
     //This function will update the local state with the users response
@@ -29,10 +30,10 @@ class ThirdPage extends Component {
     render(){
         return(
             <div>
-                <form onSubmit={this.submitData}>
+                <form>
                     <input onChange={this.handleChange} placeholder='How supported do you feel' value={this.state.support} />
                 </form>
-                <button onClick={this.changeLocation} />
+                <button onClick={this.submitData} />
             </div>
         )
     }
