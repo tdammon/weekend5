@@ -22,4 +22,4 @@ class FifthPage extends Component {
 }
 
 //this export connects the component to the reduxStore
-export default connect(withRouter(FifthPage));
+export default connect()(withRouter(FifthPage));

@@ -54,7 +54,7 @@ class FourthPage extends Component {
                 <form>
                     <input onChange={this.handleChange} placeholder='Any comments' value={this.state.comments} />
                 </form>
-                <button onSubmit={this.submitData} />
+                <button onClick={this.submitData} />
             </div>
         )
     }
