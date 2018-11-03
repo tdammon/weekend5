@@ -12,6 +12,7 @@ class FirstPage extends Component {
     submitData=(event) => {
         event.preventDefault();
         this.props.dispatch({type: 'SET_FEELING', payload: this.state})
+        this.changeLocation();
     }
 
     //This function will update the local state with the users response
@@ -29,10 +30,10 @@ class FirstPage extends Component {
     render(){
         return(
             <div>
-                <form onSubmit={this.submitData}>
+                <form>
                     <input onChange={this.handleChange} placeholder='How are you feeling' value={this.state.feeling} />
                 </form>
-                <button onClick={this.changeLocation} />
+                <button onClick={this.submitData} />
             </div>
         )
     }
