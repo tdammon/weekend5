@@ -1,4 +1,32 @@
 # Redux Feedback Loop
+This app allows users to answer a series of feedback questions which will be submitted to a database.  Each page will record a users answer with a Redux reducer after the next button is clicked.  The page will also route the user to the next question.  Additionally there is an admin view which allows an administrator to view the entire database.
+
+##Built With
+JavaScript, React, Redux, Material-UI
+
+###Prerequisites
+Node is required for this project https://nodejs.org/en/
+
+####Installing
+To get this project running
+1. Download this project.
+2. npm install
+3. npm start
+
+#####Completed Features
+1. Axios GET request to server
+2. Axios POST request to server
+3. 4 pages with inputs sent to a reducer via dispatch
+4. 1 reducer in index which handles all dispatch requests
+5. Routes between pages
+6. Admin page which displays database information as a table
+
+######Next Steps
+1. Add additional material-ui styling
+2. Add transition effects between pages
+
+#######Authors
+Trevor J.. Dammon
 
 > **PLEASE COMMENT YOUR CODE.** Do not clone this repository. Instead, download the zip, extract the contents, `git init`, `git add .`, `git commit -m "initial commit - base project"` and add your remote. Please do this before you leave for the day.
 
